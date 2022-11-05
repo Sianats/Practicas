@@ -67,10 +67,6 @@ class MasterMindGame:
                 exactMatches += 0
         return exactMatches
 
-    def countPartialMatches(self, matches: MasterMindColor, variable: MasterMindColor) -> int:
- 
-    # filter(lambda x: x in arr1, arr2) -->
-    # filter element x from list arr2 where x
-    # also lies in arr1
-        parcialmatch = list(filter(lambda x: x in matches, variable))
+    def countPartialMatches(self, matches: MasterMindColor) -> int:
+        parcialmatch = list(filter(lambda x: x in matches, self.secretCode))
         return len(parcialmatch)

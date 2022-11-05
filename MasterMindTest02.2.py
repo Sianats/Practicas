@@ -1,4 +1,4 @@
-from MasterMind import MasterMindGame
+from MasterMind02 import MasterMindGame
 
 #Confía pero comprueba, Raymond Reddington en The Black List.
 
