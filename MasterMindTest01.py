@@ -1,4 +1,4 @@
-from MasterMind01 import MasterMindGame
+from MasterMind03 import MasterMindGame
 
 MM = MasterMindGame()
 

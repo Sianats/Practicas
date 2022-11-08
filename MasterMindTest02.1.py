@@ -1,4 +1,4 @@
-from MasterMind03 import MasterMindGame
+from MasterMind02 import MasterMindGame
 
 #Confía pero comprueba, Raymond Reddington en The Black List.
 
@@ -20,23 +20,24 @@ if testGame.countExactMatches(testGame.secretCode) != len(testGame.secretCode):
 else:
     print("La clave secreta suministrada coincide con la clave secreta.")
 
-def comparePartialMatches(code: str, guess: str, expected: int):
+
+def compareMatches(code: str, guess: str, expected: int):
     game = MasterMindGame(code)
 
     colors = game.toMasterMindColorCombination(guess)
 
-    nMatches = game.countPartialMatches(colors)
+    nMatches = game.countExactMatches(colors)
 
     if expected != nMatches:
-        print(f"La combinación {guess} debería tener {expected} semiaciertos con la clave {code} y tenemos {nMatches}")
+        print(f"La combinación {guess} debería tener {expected} aciertos con la clave {code} y tenemos {nMatches}")
     else:
-        print(f"La combinación {guess} tiene {nMatches} semiaciertos que coincide con lo esperado {expected} semiaciertos para la clave {code}")
+        print(f"La combinación {guess} tiene {nMatches} aciertos que coincide con lo esperado {expected} aciertos para la clave {code}")
 
-comparePartialMatches("RGGB", "RGGB", 0)
+compareMatches("RGGB", "RGGB", 4)
 
-comparePartialMatches("RGGB", "KKKK", 0)
-comparePartialMatches("RGGB", "GGGG", 0)
-comparePartialMatches("RGGB", "RBBB", 0)
-comparePartialMatches("RGGB", "GRRG", 3)
-comparePartialMatches("RGGB", "KGBY", 1)
-comparePartialMatches("RGGB", "GGBG", 2)
+compareMatches("RGGB", "KKKK", 0)
+compareMatches("RGGB", "GGGG", 2)
+compareMatches("RGGB", "RBBB", 2)
+compareMatches("RGGB", "GRRG", 0)
+compareMatches("RGGB", "KGBY", 1)
+compareMatches("RGGB", "GGBG", 1)
