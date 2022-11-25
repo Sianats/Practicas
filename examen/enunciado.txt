@@ -1,0 +1,104 @@
+Top MasterMind
+Te recomiendo leer hasta el final antes de empezar a programar.
+
+
+Ahora que ya has terminado de desarrollar tu MasterMind es hora de demostrar que eres el mejor.
+
+Y para conseguirlo tendrás que conseguir guardar tu mejor marca en el fichero: topMMPlayers.txt.
+
+Esto es lo que tendrás que hacer para conseguirlo.
+
+Descargar el fichero topMMPlayers.txt
+Ejercicio 1 ( 2 Puntos )
+
+Utiliza el código de tu práctica MasterMind para añadir un nuevo método: readTopPlayers
+
+El método debe leer el fichero topMMPlayers.txt que encontrás en el apartado de archivos.
+
+El fichero contiene los tres mejores jugadores almacenados sin ordenar con la siguiente estructura.
+David-5#Jesus-6#Javier-9
+
+Donde cada elemento se compone de otros dos, nombre y número de tiradas. 
+Nombre-Número de Tiradas#
+
+Es decir, el nombre del jugador top, y el número de tiradas máximo en el que ha conseguido acertar la clave mastermind.
+
+Utilizando esta información, debe crear el diccionario:
+mmTopPlayers
+
+Que necesitaremos para completar los otros dos ejercicios.
+
+Para crear el diccionario almacena en la clave el nombre del jugador, y como valor en número de tiradas.
+
+Debes llamar a este método en el constructor de la clase, para que el fichero se carga al inicializar.
+
+
+Ejercicio 2 ( 3 Puntos )
+
+Ok ya estamos listos para Jugar.
+
+Debes añadir un nuevo método updateTopPlayers que tendrá como parámetros el nombre del jugador, y el número de tiradas que ha necesitado para acertar la clave secreta.
+
+Llamaremos a este método cuando el jugador acierte la clave secreta dentro del método newTurn.
+
+Lo primero será pedir al jugador que escriba su nombre en la consola porque lo vamos a necesitar para llamar al método updateTopPlayers, junto el número de tiradas con las que ha conseguido acertar.
+
+Entonce updateTopPlayers tendrá que hacer lo siguiente.
+
+    Utilizar el diccionario mmTopPlayers para comprobar si el nuevo jugador ha conseguido acertar en menos tiradas que alguno de los jugadores en el top 3.
+    Si la puntuación es igual o menor que alguno de los jugadores, el antiguo jugador sale del top y entra el nuevo.
+    Si no ha sacado mejor puntuación que los jugadores del top 3 el diccionario se quedará como estaba.
+
+Una vez hemos terminado de actualizar el diccionario mostraremos el siguiente mensaje:
+
+'Comprueba si eres un Top 3 MasterMind'
+
+Y a continuación la lista del top 3 (sin ordenar) con el siguiente formato.
+
+'MVP (Nombre del jugador top) acertó la clave en (número de tiradas) intentos.'
+
+
+Importante. El orden los jugadores en el diccionario no es importante, solo el número de tiradas que han necesitado para acertar.
+
+Ejercicio 3 ( 2 Puntos )
+
+Muy bien eres un Titán del MasterMind, pero no te servirá para presumir si no lo dejas por escrito.
+
+Para conseguirlo, deberás escribir un método de clase writeTopPlayers.
+
+Llamaremos al método writeTopPlayers después de haber actualizado el diccionario mmTopPlayers con el método updateTopPlayers dentro de newTurn.
+
+El método debe hacer lo siguiente.
+
+    Utilizar el diccionario mmTopPlayers para generar la cadena que almacenaremos en el fichero topMMPlayers.txt  con la información actualizada o no.
+    Recuerda la estructura del fichero Nombre-Número de Tiradas#  para cada uno de los jugadores top.
+    Escribir el resultado en el fichero sobreescribiendo lo que hay.
+
+Recoge tu insignia, ya puedes presumir de ser un Top MasterMind.
+
+
+Importante. El orden los jugadores en el diccionario no es importante, solo el número de tiradas que han necesitado para acertar.
+
+
+Requisitos de la entrega
+
+Para obtener el 100% hay que cumplir los siguientes requisitos:
+
+    Debe cumplir con los requisitos de cada uno de los ejercicios propuestos.
+    Debes entregar un único fichero de extensión .py con el nombre TopMasterMind con las soluciones.
+    Entregar dentro del tiempo de examen.
+    Hay que seguir buenas prácticas de desarrollo software, comentarios, identación, claridad.
+
+Si no está entregado antes de finalizar el examen la nota es un 0.
+
+Si está como borrador no cuenta como entregado, y la nota es un 0.
+
+Tienes un único intento para entregar, por favor revisa bien antes de darle al botón de aceptar.
+
+Recomendaciones
+
+    Lee con calma y atención el enunciado, asegurate de entender lo que te piden, piensa antes de programar.
+    Desarrolla tu código y prueba paso a paso, construye sobre cimientos sólidos.
+    Prueba inicializando tu clase mastermind con una clave conocida.
+    Comprueba que subes los archivos correctos.
+    Recuerda el mantra KISS y la doctrina del doctor Amarrategui, que se resume en lo siguiente: a veces menos es más.
