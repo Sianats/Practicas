@@ -1,8 +1,12 @@
+# import socket programming library
+import socket
+import sys
 import random
-from socket import *
-from MMST import *
 
-# esqueleto inicial
+# import thread module
+from _thread import *
+import threading
+
 class MasterMindGame:
     # declaramos las variables que vamos a utilizar
 
@@ -11,8 +15,8 @@ class MasterMindGame:
     secretCode = []  # código secreto que tenemos que adivinar.
 
     validColors = "rgybkw"  # colores mastermind permitidos
-
-    maxTurns = 10  # máximo número de turnos para acertar la clave.
+    
+    maxTurns = 10
     currentTurn = 0  # turno actual.
 
     # construimos la función para iniciar la clase
@@ -109,29 +113,65 @@ class MasterMindGame:
             print(msg.format(self.currentTurn))
             self.currentTurn = self.maxTurns
             return 0
-    
-class TCPServer():
+ 
+print_lock = threading.Lock()
+ 
+# thread function
+def threaded(c):
+    while True:
+ 
+        # data received from client
+        data = c.recv(1024)
+        if not data:
+            print('Bye')
+             
+            # lock released on exit
+            print_lock.release()
+            break
+ 
+        # reverse the given string from client
+        data = data[::-1]
+ 
+        # send back reversed string to client
+        c.send(data)
+ 
+    # connection closed
+    c.close()
+ 
+ 
+def Main():
+    #Aqui va la IP que recibes como comando
+    host = ""
+    #Aqui obtendrás las variables como ip y puerto
+    print('The list of arguments without file name: ', sys.argv[1:])
 
-    def __init__(self, host, port):
-        self.host = host
-        self.port = port
-        self.__socket = None
-
-    def connect(self):
-        self.__socket = socket(AF_INET. SOCK_STREAM)
-        self.__socket.bind((self.host. self.port))
-        self.__socket.listen(1)
-
-    def disconect(self):
-        self.__socket.close()
-        self.__socket = None
-
-    def getSocket(self):
-        return self.__socket
-
-    def communication(self):
-        while True:
-            cliente, direccion = self.__socket
-            print("Conexión desde:", direccion)
-            socketCliente = MMST(cliente, direccion)
-            socketCliente.start
+    # reserve a port on your computer
+    # in our case it is 12345 but it
+    # can be anything
+    port = 12345
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.bind((host, port))
+    print("socket binded to port", port)
+ 
+    # put the socket into listening mode
+    s.listen(5)
+    print("socket is listening")
+ 
+    # a forever loop until client wants to exit
+    while True:
+ 
+        # establish connection with client
+        c, addr = s.accept()
+ 
+        # lock acquired by client
+        print_lock.acquire()
+        print('Connected to :', addr[0], ':', addr[1])
+ 
+        # Start a new thread and return its identifier
+        start_new_thread(threaded, (c,))
+        
+        s.close()
+ 
+ 
+if __name__ == '__main__':
+    Main()

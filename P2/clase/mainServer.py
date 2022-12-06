@@ -1,4 +1,4 @@
-import TCPS
+import TCPS as TCPS
 
 if __name__ == '__main__':
     socketServer = TCPS.TCPServer('localhost', 15008)
